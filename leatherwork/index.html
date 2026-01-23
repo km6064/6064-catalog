@@ -33,8 +33,16 @@
             font-weight: 300;
             letter-spacing: 2px;
             writing-mode: vertical-rl;
+            height: auto;
             text-orientation: mixed;
             height: 300px;
+        }
+        .header-left h1 img {
+            height: 65px;
+            width: auto;
+            transform: rotate(90deg);
+            transform-origin: top left;
+            margin-left: 60px;
         }
 
         .header-right {
@@ -204,6 +212,19 @@
             color: #999;
         }
 
+        .footer-link {
+            font-size: 22px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: #000;
+            border-bottom: 0px solid #000;
+            padding-bottom: 2px;
+        }
+
+        .footer-link:hover {
+            opacity: 0.5;
+        }
+
         .minimal-link {
             font-size: 12px;
             letter-spacing: 2px;
@@ -336,6 +357,11 @@
                 height: auto;
                 margin-bottom: 40px;
             }
+            .header-left h1 img {
+                width: 200px;
+                transform: none; /* remove rotation */
+                margin-left: 0px;
+            }
             .hero,
             .hero-reverse {
                 grid-template-columns: 1fr;
@@ -402,8 +428,11 @@
 
 <body>
     <div class="header">
-        <div class="header-left">
+        <!-- <div class="header-left">
             <h1><strong>K&nbsp;&nbsp;MITHANI</strong></h1>
+        </div> -->
+        <div class="header-left">
+            <h1><img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogotopLine.png" alt="Leather"></h1>
         </div>
         <div class="header-right">
             <div class="catalog">6064-25P_KML</div>
@@ -518,7 +547,7 @@
     </div>
 
     <div class="statement">
-        <p>Edges are beveled, burnished smooth using water and friction, then finished with natural waxes. No edge paint—just the leather itself, polished to a finish.</p>
+        <p>Cut edges are creased, sanded smooth and then hand painted with specialized water based paint. The edge paint is sanded smooth and reapplied as many as 4 or 5 times depending on the edge, before polishing smooth with heat to obtain a perfect durable edge</p>
     </div>
 
     <div class="spacer-massive"></div>
@@ -568,10 +597,6 @@
 
     <div class="endnote">
         <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogoCentred.png" alt="Final">
-    </div>
-    
-    <div class="endnote">
-        <p>Commissions / hello@6064.site</p>
     </div>
 
 </body>
