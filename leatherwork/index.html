@@ -78,7 +78,6 @@
 
         .hero-image img {
             width: 100%;
-
             object-fit: cover;
 
         }
@@ -362,24 +361,32 @@
                 transform: none; /* remove rotation */
                 margin-left: 0px;
             }
-            .hero,
+
+            .hero {
+                grid-template-columns: 1fr;  
+                margin-bottom: 120px;
+            }
             .hero-reverse {
-                grid-template-columns: 1fr;
-                min-height: 60vh;
-                margin-bottom: 100px;
+                grid-template-columns: 1fr;  
+                margin-bottom: 120px;
+                min-height: auto;
             }
             .hero-empty {
-                display: none;
+                display:none;          
+            }
+            .hero-image img{
+                width: auto;
+                height: 50vh;
             }
             .statement,
             .statement-right {
-                padding: 0 20px 100px;
+                padding: 0 20px 50px;
                 margin-left: 0;
                 margin-right: 0;
             }
             .product {
                 padding: 0 20px;
-                margin-bottom: 150px;
+                margin-bottom: 100px;
             }
             .product-layout,
             .product-layout-reverse {
@@ -392,6 +399,11 @@
             .product-layout-reverse .product-info {
                 grid-column: 1;
             }
+            .product-image img {
+                width: 100%;
+                height: auto;
+                object-position: center center;
+            }
             .product-info {
                 padding-top: 0;
             }
@@ -403,8 +415,27 @@
                 grid-template-columns: 1fr 1fr 1fr;
                 gap: 10px;
                 margin-bottom: 0px;
+                padding: 0 20px;
 
             }
+            .detail-grid img {
+                width: 100%;
+                height: 20vh;
+                object-fit: cover;
+            }
+
+            .gallery-vertical {
+                display: flex;
+                gap: 20px;
+                overflow-x: auto;
+            }
+
+            .gallery-vertical img {
+                height: 50vh;
+                width: auto;
+                object-fit: cover;
+            }
+
             .gallery::after{
                 right: 20px;
                 bottom: 100px;
@@ -413,15 +444,24 @@
                 rgba(255,255,255,0) 0%, 
                 rgba(255,255,255,.1) 50%,
                 rgba(255,255,255,.9) 100%
-            );
+            )
+
             }
             .split {
                 grid-template-columns: 1fr;
                 padding: 0 20px;
+                gap: 40px;
+                margin-bottom: 15vh;
             }
+            .split img {
+                width: 100%;
+                height: 60vh;
+                object-fit: cover;
+            }
+
             .spacer { height: 15vh; }
-            .spacer-tall { height: 25vh; }
-            .spacer-massive { height: 30vh; }
+            .spacer-tall { height: 15vh; }
+            .spacer-massive { height: 15vh; }
         }
     </style>
 </head>
@@ -491,7 +531,7 @@
     </div>
 
     <div class="statement-right">
-        <p>Every piece is hand-stitched. Saddle stitching is a technique where thread passes through both sides of the leather, creating a 'locked' stitch that is more durable and repairable than machine construction.</p>
+        <p>Every piece is entirely hand-stitched. Saddle stitching is a technique where thread passes through both sides of the leather, creating a 'locked' stitch that is more durable and repairable than machine construction.</p>
     </div>
 
     <div class="spacer-tall"></div>
@@ -506,7 +546,7 @@
         </div>
     </div>
 
-    <div class="spacer-massive"></div>
+    <!-- <div class="spacer-massive"></div> -->
 
     <!-- Product 2 -->
     <div class="product">
@@ -515,29 +555,30 @@
                 <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/Elliott01.jpg" alt="Card holder">
             </div>
             <div class="product-info">
-                <div class="product-name">Elliot Travel Pouch</div>
+                <div class="product-name">Eliot Travel Pouch</div>
                 <div class="product-price"><p><em>from</em></p> £1250</div>
                 <div class="product-desc">
-                    A classic zip travel pouch with generous proportions and internal slip pocket. Fully lined in french goatskin. Hand-stitched construction. 
+                    A classic zip travel pouch with generous proportions and internal slip pocket. Fully lined in french goatskin. 
                 </div>
                 <div class="product-specs">
                     30 × 20 x 7 cm<br>
-                    Shown in nubuck Alligator & lined in matte grey goatskin (left)<br>
+                    Shown in nubuck Alligator (left)<br>
+                    Internal slip pocket<br>
                     Saddle stitched with waxed linen thread<br>
-                    Entirely hand made
                 </div>
                 <a href="mailto:hello@6064.site?subject=Card Holder" class="minimal-link">Enquire</a>
             </div>
         </div>
     </div>
 
-    <div class="spacer-tall"></div>
 
     <div class="detail-grid">
         <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Pouch02.jpg" alt="Detail 1">
         <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle02.jpg" alt="Detail 2">
         <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle01.jpg" alt="Detail 3">
     </div>
+
+    <div class="spacer-tall"></div>
 
     <div class="hero-reverse">
         <div class="hero-image">
@@ -547,10 +588,10 @@
     </div>
 
     <div class="statement">
-        <p>Cut edges are creased, sanded smooth and then hand painted with specialized water based paint. The edge paint is sanded smooth and reapplied as many as 4 or 5 times depending on the edge, before polishing smooth with heat to obtain a perfect durable edge</p>
+        <p>Cut edges are creased, sanded smooth and then painted by hand with specialized water based paint. The edge paint is sanded smooth and reapplied as many as 4 or 5 times depending on the edge, before polishing perfectly smooth with heat to obtain a refined, durable edge.</p>
     </div>
 
-    <div class="spacer-massive"></div>
+    <div class="spacer-tall"></div>
 
 
     <div class="product">
