@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>6064-26_CAT</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Helvetica Neue', sans-serif;
+			background: #FFF;
+			color: #000;
+			line-height: 2;
+		}
+
+		.header{
+			padding: 60px 40px;
+			text-align: left;
+			border bottom: 1px solid #333;
+		}
+
+		.header h1{
+			font-size: 24px;
+			letter-spacing: 4px;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+
+		.grid{
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2px;
+			background: #000;
+		}
+
+		.project-card{
+			padding: 120px 40px;
+			text-decoration: none;
+			color: #000;
+			transition: all 0.4s ease;
+			position: relative;
+			overflow: hidden;
+			cursor: pointer;
+		}
+
+		/* colour blocks */
+		.project-card:nth-child(1) { background: #6F9566; }
+		.project-card:nth-child(2) { background: #94BA89; }
+		.project-card:nth-child(3) { background: #CAD9C6; }
+		.project-card:nth-child(4) { background: #87C162; }
+
+		/* Image preview overlay */
+
+		.project-preview{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: opacity 0.4s ease;
+			pointer-events: none;
+		}
+
+		.project-preview img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.project-card:hover .project-preview{
+			opacity: 1;
+		}
+
+		/* Content container */
+		.project-content{
+			position: relative;
+			z-index: 2;
+			transition: all 0.4s ease;
+		}
+
+		.project-card:hover .project-content{
+			transform: translateY(-10px);
+			color: #fff;
+			text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		}
+
+		.project-number{
+			font-size: 11px;
+			letter-spacing: 2px;
+			margin-bottom: 20px;
+			opacity: 0.7;
+		}
+
+		.project-title{
+			font-size: 48px;
+			font-weight: 700;
+			margin-bottom: 12px;
+			letter-spacing: -1px;
+		}
+
+		.project-subtitle{
+			font-size: 16px;
+			font-weight: 300;
+			letter-spacing: 1px;
+		}
+
+		@media (max-width: 1000px){
+			.grid {
+				grid-template-columns: 1fr;
+			}
+			.project-title{
+				font-size: 32px;
+			}
+			.project-card{
+				padding: 80px 30px;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<h1>Catalog</h1>
+	</div>
+
+	<div class="grid">
+		<a href="/carino-mio/" class="project-card">
+			<div class="project-preview">
+				<img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/INSTANCES/CarinoMioMicrophone/0B9A1608-Edit.jpg" alt="Cariño Mío">
+			</div>
+			<div class="project-content">
+				<div class="project-number">6064-25P_CMM</div>
+				<div class="project-title">Cariño Mío</div>
+				<div class="project-subtitle">Ribbon Microphone</div>
+			</div>
+		</a>
+		<a href="/leatherwork/" class="project-card">
+			<div class="project-preview">
+				<img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="Cariño Mío">
+			</div>
+			<div class="project-content">
+				<div class="project-number">6064-25P_KML</div>
+				<div class="project-title">K&nbsp;&nbsp;Mithani</div>
+				<div class="project-subtitle">Fine Leatherwork</div>
+			</div>
+		</a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
