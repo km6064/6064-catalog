@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>6064-26_CAT</title>
+	<title>6064 Catalogue</title>
 	<style>
 		*{
 			margin: 0;
@@ -18,7 +18,7 @@
 			line-height: 2;
 		}
 
-				/* Custom cursor - only shows on project cards */
+		/* Custom cursor - only shows on project cards */
 		.cursor {
 			width: 50px;
 			height: 50px;
@@ -28,7 +28,8 @@
 			position: fixed;
 			pointer-events: none;
 			z-index: 9999;
-			transition: transform 0.25s ease, opacity 0.15s ease;
+			/*transition: transform 0.25s ease, opacity 0.15s ease;*/
+			transition: transform 0.45s cubic-bezier(0.08, 0.59, 0.265, 1.55), opacity 0.15s ease;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -46,7 +47,7 @@
 		}
 
 		.project-card {
-			cursor: none; /* hide default cursor only on cards */
+			cursor: none;
 		}
 
 		.header{
@@ -54,7 +55,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			border bottom: 1px solid #ddd;
+			border-bottom: 1px solid #ddd;
 		}
 
 		.back-link {
@@ -69,12 +70,6 @@
 			opacity: 0.6;
 		}
 
-		.header h1{
-			font-size: 24px;
-			letter-spacing: 11.5;
-			font-weight: 400;
-			text-transform: uppercase;
-		}
 		.header p{
 			font-size: 12px;
 			font-weight: 200;
@@ -88,7 +83,9 @@
 			grid-template-columns: repeat(2, 1fr);
 			gap: 2px;
 			background: #000;
+			transition: all 0.4s ease;
 		}
+
 
 		.project-card{
 			padding: 120px 40px;
@@ -100,17 +97,12 @@
 		}
 
 		/* colour blocks */
-		/*.project-card:nth-child(1) { background: #6f7c93; }
-		.project-card:nth-child(2) { background: #d6ccc4; }
-		.project-card:nth-child(3) { background: #ca8f59; }
-		.project-card:nth-child(4) { background: #ca8f59; }*/
 		.project-card:nth-child(1) { background: #6f7c93; }
 		.project-card:nth-child(2) { background: #d6ccc4; }
 		.project-card:nth-child(3) { background: #d6ccc4; }
 		.project-card:nth-child(4) { background: #d6ccc4; }
 
 		/* Image preview overlay */
-
 		.project-preview{
 			position: absolute;
 			top: 0;
@@ -180,15 +172,16 @@
 		}
 
 		@media (max-width: 1000px){
-			.grid {
+			.grid{
 				grid-template-columns: 1fr;
+				max-width: none;
 			}
 			.project-title{
 				font-size: 32px;
 			}
 			.project-card{
 				padding: 80px 30px;
-				cursor: none;
+				cursor: pointer;
 			}
 			.project-preview{
 				opacity: 0.3;
@@ -196,9 +189,12 @@
 			.project-card:active .project-preview{
 				opacity: 1;
 			}
-/*			.cursor {
+			.cursor {
 				display: none;
-			}*/
+			}
+			.header p {
+				writing-mode: horizontal-tb;
+			}
 		}
 
 	</style>
@@ -206,11 +202,11 @@
 
 <body>
 
-	<div class="cursor">VIEW</div>
+	<div class="cursor">View</div>
 
 	<div class="header">
 		<a href="https://6064.site" class="back-link">← 6064.site</a> 
-		<p> Catalogue </p>
+		<p>Catalogue</p>
 	</div>
 
 	<div class="grid">
@@ -219,7 +215,7 @@
 				<img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/INSTANCES/CarinoMioMicrophone/0B9A1608-Edit.jpg" alt="Cariño Mío">
 			</div>
 			<div class="project-content">
-				<div class="project-number">6064-25P_CMM</div>
+				<div class="project-number">6064-26P_CMM</div>
 				<div class="project-title">Cariño Mío</div>
 				<div class="project-subtitle">Ribbon Microphone</div>
 			</div>
@@ -235,43 +231,23 @@
 			</div>
 		</a>
 	</div>
-		<!-- <a href="#" class="project-card">
-			<div class="project-preview">
-				<img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/0B9A1688-Edit.jpg" alt="Shelf">
-			</div>
-			<div class="project-content">
-				<div class="project-number">6064-25P_BMS</div>
-				<div class="project-title">Display Shelf</div>
-				<div class="project-subtitle">Home Accessories</div>
-			</div>
-		</a>
-		 <a href="#" class="project-card">
-			<div class="project-preview">
-				<img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/INSTANCES/PLATINUM/Platinum.mp4" alt="video/mp4">
-			</div>
-			<div class="project-content">
-				<div class="project-number">6064-25P_PGC</div>
-				<div class="project-title">Ingot Chain</div>
-				<div class="project-subtitle">Fine Jewellery</div>
-			</div>
-		</a> -->
 
 	<div class="footer">
 		<div class="footer-meta">6064 / Catalogue [2026]</div>
 	</div>
 
 	<script>
+
+
 		// Custom cursor - only on project cards
 		const cursor = document.querySelector('.cursor');
 		const projectCards = document.querySelectorAll('.project-card');
 
-		// Track mouse position
 		document.addEventListener('mousemove', (e) => {
-			cursor.style.left = e.clientX - 30 + 'px';
-			cursor.style.top = e.clientY - 30 + 'px';
+			cursor.style.left = e.clientX - 25 + 'px';
+			cursor.style.top = e.clientY - 25 + 'px';
 		});
 
-		// Show cursor only when hovering project cards
 		projectCards.forEach(card => {
 			card.addEventListener('mouseenter', () => {
 				cursor.classList.add('active');
@@ -286,28 +262,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
