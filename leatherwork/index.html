@@ -13,36 +13,47 @@
 
         body {
             font-family: 'Helvetica Neue', 'Hiragino Sans', sans-serif;
-            background: #fff;
-            color: #222;
-            line-height: 2;
-            max-width: 1500px;
-            margin: 0 auto;
+            background: #faf9f7;
+            color: #1a1a1a;
+            line-height: 1.8;
         }
 
-        /* Minimal header */
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Consistent page margins */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        /* Header */
         .header {
-            padding: 100px 60px;
+            padding: 80px 50px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .header-left h1 {
-            font-size: 28px;
-            font-weight: 300;
-            letter-spacing: 2px;
             writing-mode: vertical-rl;
-            height: auto;
             text-orientation: mixed;
-            height: 300px;
+            height: 280px;
         }
+
         .header-left h1 img {
-            height: 65px;
+            height: 60px;
             width: auto;
             transform: rotate(90deg);
             transform-origin: top left;
-            margin-left: 60px;
+            margin-left: 55px;
         }
 
         .header-right {
@@ -52,621 +63,643 @@
         .catalog {
             font-size: 10px;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #999;
         }
 
         .title {
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 300;
         }
 
-        /* Asymmetric hero */
-        .hero {
+        /* Opening hero - asymmetric */
+        .hero-opening {
             display: grid;
-            grid-template-columns: 40% 60%;
-            max-height: 90vh;
-            margin-bottom: 200px;
+            grid-template-columns: 35% 65%;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 600px;
             overflow: hidden;
         }
 
-        .hero-empty {
-            background: #fafafa;
-        }
-
-        .hero-image img {
-            width: 100%;
-            object-fit: cover;
-
-        }
-
-        /* Alternate asymmetric layout */
-        .hero-reverse {
-            display: grid;
-            grid-template-columns: 60% 40%;
-            min-height: 90vh;
-            margin-bottom: 200px;
-        }
-
-        /* Full bleed image */
-        .full {
-            width: 100%;
-            margin-bottom: 250px;
-        }
-
-        .full img {
-            width: 100%;
-            height: 85vh;
-            object-fit: cover;
-        }
-
-        /* Floating text */
-        .statement {
-            padding: 0 60px 200px;
-            max-width: 500px;
-            margin-left: 15%;
-        }
-
-        .statement p {
-            font-size: 16px;
-            line-height: 2.2;
-            font-weight: 300;
-        }
-
-        /* Right-aligned text */
-        .statement-right {
-            padding: 0 60px 200px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: 10%;
-        }
-
-        .statement-right p {
-            font-size: 16px;
-            line-height: 2.2;
-            font-weight: 300;
-        }
-
-        /* Product - asymmetric */
-        .product {
-            margin-bottom: 300px;
-            padding: 0 60px;
-        }
-
-        .product-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            max-width: 1400px;
-        }
-
-        .product-image {
-            grid-column: 2;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            height: 700px;
-            object-position: center center;
-        }
-        .product-image video {
-            height: 200%;
-
-        }
-
-        .product-info {
-            grid-column: 1;
-            grid-row: 1;
-            padding-top: 80px;
-        }
-
-        /* Reverse layout for product */
-        .product-layout-reverse {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            max-width: 1400px;
-        }
-
-        .product-layout-reverse .product-image {
-            grid-column: 1;
-        }
-
-        .product-layout-reverse .product-info {
-            grid-column: 2;
-        }
-
-        .product-name {
-            font-size: 32px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .product-price {
-            font-size: 20px;
-            font-weight: 300;
-            margin-bottom: 60px;
-            color: #666;
-        }
-
-        .product-price p{
-
-            font-size: 12px;
-        }
-
-        .product-desc {
-            font-size: 14px;
-            line-height: 2;
-            margin-bottom: 40px;
-            max-width: 400px;
-        }
-
-        .product-specs {
-            font-size: 11px;
-            line-height: 2.2;
-            margin-bottom: 60px;
-            color: #999;
-        }
-
-        .footer-link {
-            font-size: 22px;
-            letter-spacing: 2px;
-            text-decoration: none;
-            color: #000;
-            border-bottom: 0px solid #000;
-            padding-bottom: 2px;
-        }
-
-        .footer-link:hover {
-            opacity: 0.5;
-        }
-
-        .minimal-link {
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-decoration: none;
-            color: #000;
-            border-bottom: 1px solid #000;
-            padding-bottom: 2px;
-        }
-
-        .minimal-link:hover {
-            opacity: 0.5;
-        }
-
-        /* Vertical gallery */
-        .gallery {
-            padding: 0 60px 200px;
-            position: relative;
-        }
-
-        .gallery::after {
-            content: '';
-            position: absolute;
-            right: 60px;
-            top: 0;
-            bottom: 200px; /* match the padding-bottom */
-            width: 300px; /* width of fade */
-            background: linear-gradient(to right, 
-                rgba(255,255,255,0) 0%, 
-                rgba(255,255,255,.1) 70%,
-                rgba(255,255,255,.9) 100%
-            );
-            pointer-events: none; /* allows clicking/scrolling through it */
-        }
-
-        .gallery-vertical {
-            display: flex;
-            gap: 40px;
-            overflow-x: auto;
-        }
-
-        .gallery-vertical img {
-            height: 80vh;
-            width: auto;
-            object-fit: cover;
-        }
-
-        /* Grid detail shots */
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            padding: 0 60px;
-            margin-bottom: 250px;
-        }
-
-        .detail-grid img {
-            width: 100%;
-            height: 50vh;
-            object-fit: cover;
-        }
-
-        /* Two column split */
-        .split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 0 60px;
-            margin-bottom: 200px;
-        }
-
-        .split img {
+        .hero-opening img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* Spacer sections */
-        .spacer {
-            height: 20vh;
+        .hero-void {
+            background: #f5f4f2;
         }
 
-        .spacer-tall {
-            height: 40vh;
+        /* Section spacing */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
         }
 
-        .spacer-massive {
-            height: 40vh;
+        /* Section backgrounds */
+        .bg-warm {
+            background: #faf9f7;
         }
 
-        /* Note section */
-        .note {
-            padding: 0 60px 200px;
-            max-width: 450px;
+        .bg-cool {
+            background: #f5f4f2;
+        }
+
+        .bg-white {
+            background: #fff;
+        }
+
+        /* Section wrapper with background */
+        .section-block {
+            padding: 80px 0;
+        }
+
+        /* Text blocks - unified styling */
+        .text-block {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .text-block p {
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 2;
+            max-width: 580px;
+            letter-spacing: 0.01em;
+            color: #333;
+        }
+
+        .text-block-center {
+            padding: 80px 50px;
+            max-width: 1400px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .note p {
+        .text-block-center h2 {
             font-size: 13px;
-            line-height: 2.4;
-            font-weight: 300;
-            color: #666;
-        }
-
-
-        /* End note */
-        .endnote {
-            padding: 10px 60px 100px;
-            text-align: center;
-        }
-        .endnote img{
-            width: 200px;
-            padding: none;
-        }
-
-        .endnote p {
-            font-size: 12px;
-            letter-spacing: 3px;
+            font-weight: 400;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            font-weight: 300;
+            margin-bottom: 20px;
+            color: #1a1a1a;
         }
 
+        .text-block-center p {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 2;
+            color: #555;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .text-block-right {
+            padding: 80px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .text-block-right p {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 2;
+            color: #555;
+            max-width: 450px;
+        }
+
+        /* Single image - centered, modest size */
+        .single {
+            padding: 60px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .single-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            height: 520px;
+        }
+
+        /* Single image - larger */
+        .single-large {
+            padding: 60px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .single-large-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            height: 600px;
+        }
+
+        /* Pair - equal sizes */
+        .pair {
+            padding: 50px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .pair-item {
+            height: 480px;
+        }
+
+        /* Pair - tall */
+        .pair-tall {
+            padding: 50px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .pair-tall .pair-item {
+            height: 600px;
+        }
+
+        /* Trio - equal */
+        .trio {
+            padding: 50px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .trio-item {
+            height: 400px;
+        }
+
+        /* Quartet - product grid style */
+        .quartet {
+            padding: 50px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .quartet-item {
+            height: 320px;
+        }
+
+        /* Asymmetric pair - one larger */
+        .pair-asymmetric {
+            padding: 50px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 25px;
+            align-items: end;
+        }
+
+        .pair-asymmetric-item-large {
+            height: 550px;
+        }
+
+        .pair-asymmetric-item-small {
+            height: 400px;
+        }
+
+        /* Reverse asymmetric */
+        .pair-asymmetric-reverse {
+            padding: 50px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 25px;
+            align-items: end;
+        }
+
+        /* Single offset left */
+        .single-left {
+            padding: 60px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .single-left-inner {
+            max-width: 550px;
+            height: 450px;
+            margin-right: auto;
+        }
+
+        /* Single offset right */
+        .single-right {
+            padding: 60px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .single-right-inner {
+            max-width: 550px;
+            height: 450px;
+            margin-left: auto;
+        }
+
+        /* Spacer */
+        .spacer {
+            height: 40px;
+        }
+
+        .spacer-large {
+            height: 80px;
+        }
+
+        /* Closing */
+        .closing {
+            padding: 120px 50px 100px;
+            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .closing p {
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 2.2;
+            color: #888;
+            margin-bottom: 60px;
+        }
+
+        .closing-logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .closing-logo img {
+            width: 180px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+        }
+
+        /* Responsive */
         @media (max-width: 968px) {
             .header {
                 flex-direction: column;
-                padding: 60px 20px;
+                padding: 50px 25px;
             }
+
             .header-left h1 {
                 writing-mode: horizontal-tb;
                 height: auto;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
             }
+
             .header-left h1 img {
-                width: 200px;
-                transform: none; /* remove rotation */
-                margin-left: 0px;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;  
-                margin-bottom: 120px;
-            }
-            .hero-reverse {
-                grid-template-columns: 1fr;  
-                margin-bottom: 120px;
-                min-height: auto;
-            }
-            .hero-empty {
-                display:none;          
-            }
-            .hero-image img{
-                /*width: auto;*/
-                height: 50vh;
-            }
-            .statement,
-            .statement-right {
-                padding: 0 20px 50px;
-                margin-left: 0;
-                margin-right: 0;
-            }
-            .product {
-                padding: 0 20px;
-                margin-bottom: 100px;
-            }
-            .product-layout,
-            .product-layout-reverse {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .product-image,
-            .product-info,
-            .product-layout-reverse .product-image,
-            .product-layout-reverse .product-info {
-                grid-column: 1;
-            }
-            .product-image img {
-                width: 100%;
+                width: 160px;
                 height: auto;
-                object-position: center center;
-            }
-            .product-info {
-                padding-top: 0;
-            }
-            .gallery,
-            .detail-grid {
-                padding: 0 20px 100px;
-            }
-            .detail-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 10px;
-                margin-bottom: 0px;
-                padding: 0 20px;
-
-            }
-            .detail-grid img {
-                width: 100%;
-                height: 20vh;
-                object-fit: cover;
+                transform: none;
+                margin-left: 0;
             }
 
-            .gallery-vertical {
-                display: flex;
-                gap: 20px;
-                overflow-x: auto;
-            }
-
-            .gallery-vertical img {
-                height: 50vh;
-                width: auto;
-                object-fit: cover;
-            }
-
-            .gallery::after{
-                right: 20px;
-                bottom: 100px;
-                width: 125px; /* width of fade */
-                background: linear-gradient(to right, 
-                rgba(255,255,255,0) 0%, 
-                rgba(255,255,255,.1) 50%,
-                rgba(255,255,255,.9) 100%
-            )
-
-            }
-            .split {
+            .hero-opening {
                 grid-template-columns: 1fr;
-                padding: 0 20px;
-                gap: 40px;
-                margin-bottom: 15vh;
-            }
-            .split img {
-                width: 100%;
-                height: 60vh;
-                object-fit: cover;
+                height: 450px;
             }
 
-            .spacer { height: 15vh; }
-            .spacer-tall { height: 15vh; }
-            .spacer-massive { height: 15vh; }
-
-            .endnote {
-                padding: 10px 60px 50px;
-                text-align: center;
+            .hero-void {
+                display: none;
             }
-            .endnote img{
-                width: 125px;
-                padding: none;
+
+            .section,
+            .single,
+            .single-large,
+            .single-left,
+            .single-right,
+            .pair,
+            .pair-tall,
+            .pair-asymmetric,
+            .pair-asymmetric-reverse,
+            .trio,
+            .quartet,
+            .text-block,
+            .text-block-center,
+            .text-block-right {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .single-inner {
+                max-width: 100%;
+                height: 400px;
+            }
+
+            .single-large-inner {
+                max-width: 100%;
+                height: 450px;
+            }
+
+            .single-left-inner,
+            .single-right-inner {
+                max-width: 100%;
+                height: 350px;
+            }
+
+            .pair,
+            .pair-tall {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .pair-item {
+                height: 380px;
+            }
+
+            .pair-tall .pair-item {
+                height: 420px;
+            }
+
+            .pair-asymmetric,
+            .pair-asymmetric-reverse {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .pair-asymmetric-item-large,
+            .pair-asymmetric-item-small {
+                height: 380px;
+            }
+
+            .trio {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .trio-item {
+                height: 320px;
+            }
+
+            .quartet {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .quartet-item {
+                height: 240px;
+            }
+
+            .text-block {
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            .text-block p {
+                font-size: 16px;
+            }
+
+            .text-block-center,
+            .text-block-right {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            .spacer { height: 20px; }
+            .spacer-large { height: 40px; }
+
+            .closing {
+                padding: 80px 25px 60px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <!-- <div class="header-left">
-            <h1><strong>K&nbsp;&nbsp;MITHANI</strong></h1>
-        </div> -->
+    <!-- Header -->
+    <header class="header">
         <div class="header-left">
-            <h1><img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogotopLine.png" alt="Leather"></h1>
+            <h1><img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogotopLine.png" alt="K Mithani Leather"></h1>
         </div>
         <div class="header-right">
             <div class="catalog">6064-26P_KML</div>
             <div class="title">Fine Leathergoods</div>
         </div>
-    </div>
+    </header>
 
-    <div class="hero">
-        <div class="hero-empty"></div>
-        <div class="hero-image">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="Leather">
+    <!-- Opening hero -->
+    <section class="hero-opening">
+        <div class="hero-void"></div>
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="Leather">
+    </section>
+
+    <!-- Opening section -->
+    <div class="bg-warm">
+        <!-- Opening text -->
+        <div class="text-block reveal">
+            <p>Hand-stitched leather goods, defined by traditional craft and design restraint.</p>
+        </div>
+
+        <!-- Single centered -->
+        <div class="single reveal">
+            <div class="single-inner">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Microwallets01.jpg" alt="Cardholder">
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- Pair -->
+        <div class="pair reveal">
+            <div class="pair-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/EdgeFinish02.jpg" alt="Edge detail">
+            </div>
+            <div class="pair-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/EdgeFinish03.jpg" alt="Stitching">
+            </div>
+        </div>
+
+        <!-- Text right -->
+        <div class="text-block-right reveal">
+            <p>Every piece is entirely hand-stitched. Saddle stitching passes thread through both sides of the leather, creating a locked stitch that is more durable and repairable than machine construction.</p>
         </div>
     </div>
 
-    <div class="statement">
-        <p>Hand-stitched leather goods, defined by traditional craft and design restraint.</p>
-    </div>
-
-    <div class="spacer-tall"></div>
-
-    <!-- Product 1 -->
-    <div class="product">
-        <div class="product-layout">
-            <div class="product-info">
-                <div class="product-name">MicroWallet Cardholder</div>
-                <div class="product-price">£180</div>
-                <div class="product-desc">
-                    Single piece folded construction composed of two bonded leathers of unique complimentary colours and leather types. Two main slots, with capacity up to 6 cards. Hand-stitched using saddle stitch construction.
-                </div>
-                <div class="product-specs">
-                    10 × 5.5 × 0.5 cm<br>
-                    Full grain, fine leathers<br>
-                    Waxed linen thread<br>
-                    3–4 weeks lead time<br>
-                    Limited batch releases
-                </div>
-                <a href="mailto:hello@6064.site?subject=Bifold" class="minimal-link">Enquire</a>
+    <!-- Cool section -->
+    <div class="bg-cool section-block">
+        <!-- Trio -->
+        <div class="trio reveal">
+            <div class="trio-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/litheblack01.jpg" alt="Lithe black">
             </div>
-            <div class="product-image">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Microwallets01.jpg" alt="Detail 3">
+            <div class="trio-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/lithegreydetail01.jpg" alt="Lithe detail">
+            </div>
+            <div class="trio-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/lithe_grey.jpg" alt="Lithe grey">
             </div>
         </div>
-    </div>
 
-    <div class="detail-grid">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/EdgeFinish02.jpg" alt="Detail 1">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/microwallet_sweep.mp4" alt="video/mp4">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/EdgeFinish03.jpg" alt="Detail 3">
-    </div>
+        <div class="spacer-large"></div>
 
-    <div class="spacer-massive"></div>
-
-    <div class="split">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Microwallets03.jpg" alt="Process">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Packaging.mp4" alt="video/mp4">
-    </div>
-
-    <div class="statement-right">
-        <p>Every piece is entirely hand-stitched. Saddle stitching is a technique where thread passes through both sides of the leather, creating a 'locked' stitch that is more durable and repairable than machine construction.</p>
-    </div>
-
-    <div class="spacer-tall"></div>
-
-    <!-- Vertical gallery -->
-    <div class="gallery">
-        <div class="gallery-vertical">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/litheblack01.jpg" alt="Process 1">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/26307153_321606541667476_1478246405192548352_n_17858719912215710.jpg" alt="Process 2">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/lithegreydetail01.jpg" alt="Process 3">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/lithe_grey.jpg" alt="Process 4">
+        <!-- Text center -->
+        <div class="text-block-center reveal">
+            <h2>Materials</h2>
+            <p>Full grain leathers sourced from historic European tanneries. French goatskin linings. Waxed linen thread.</p>
         </div>
-    </div>
 
-    <div class="detail-grid">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Pouch02.jpg" alt="Detail 1">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle02.jpg" alt="Detail 2">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle01.jpg" alt="Detail 3">
-    </div>
-
-    <div class="spacer-tall"></div>
-
-    <!-- <div class="spacer-massive"></div> -->
-
-    <!-- Product 2 -->
-    <div class="product">
-        <div class="product-layout-reverse">
-            <div class="product-image">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/Elliott01.jpg" alt="Card holder">
+        <!-- Asymmetric pair -->
+        <div class="pair-asymmetric reveal">
+            <div class="pair-asymmetric-item-large">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Pouch02.jpg" alt="Pouch">
             </div>
-            <div class="product-info">
-                <div class="product-name">Eliot Travel Pouch</div>
-                <div class="product-price"><p><em>from</em></p> £1250</div>
-                <div class="product-desc">
-                    A classic zip travel pouch with generous proportions and internal slip pocket. Fully lined in french goatskin. 
-                </div>
-                <div class="product-specs">
-                    26 × 20 x 7 cm<br>
-                    Shown in nubuck Alligator (left)<br>
-                    Internal slip pocket<br>
-                    Saddle stitched with waxed linen thread<br>
-                </div>
-                <a href="mailto:hello@6064.site?subject=Card Holder" class="minimal-link">Enquire</a>
+            <div class="pair-asymmetric-item-small">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Microwallets03.jpg" alt="Detail">
             </div>
         </div>
     </div>
 
-
-    <div class="detail-grid">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/67721425_188177238863438_6011106533277447072_n_18063251449156744.jpg" alt="Detail 1">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/67571071_521684258589074_5174133367992623608_n_18092215507065775.jpg" alt="Detail 2">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/66707421_410183442947840_5158620167664511080_n_18066281554120613.jpg" alt="Detail 3">
-    </div>
-
-    <div class="spacer-tall"></div>
-
-        <!-- Vertical gallery -->
-    <div class="gallery">
-        <div class="gallery-vertical">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_03.jpg" alt="Process 2">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_01.jpg" alt="Process 3">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_02.jpg" alt="Process 3">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_04.jpg" alt="Process 4">
-        </div>
-    </div>
-
-
-    <div class="hero-reverse">
-        <div class="hero-image">
-            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Backpack/37843287_2019254421478284_8840080599784882176_n_17954709544128620.jpg" alt="Full shot">
-        </div>
-        <div class="hero-empty"></div>
-    </div>
-
-    <div class="statement">
-        <p>Cut edges are creased, sanded smooth and then painted by hand with specialized water based paint. The edge paint is sanded smooth and reapplied as many as 4 or 5 times depending on the edge, before polishing perfectly smooth with heat to obtain a refined, durable edge.</p>
-    </div>
-
-    <div class="spacer-tall"></div>
-
-
-    <div class="product">
-        <div class="product-layout">
-            <div class="product-info">
-                <div class="product-name">Pince Wallet</div>
-                <div class="product-price">£200</div>
-                <div class="product-desc">
-                    <p>A straightforward, compact bifold cardholder. The classic design stands up to everyday rigours and only improves with time and use.</p>
-                    <p>The same design is available in a larger variant as a passport holder.</p>
-                </div>
-                <div class="product-specs">
-                    10 × 6.5 cm<br>
-                    Full grain leathers<br>
-                    French Goatskin interior<br>
-                    Hand stitched and finished
-                </div>
-                <a href="mailto:hello@6064.site?subject=Key Fob" class="minimal-link">Enquire</a>
+    <!-- White section -->
+    <div class="bg-white section-block">
+        <!-- Pair tall -->
+        <div class="pair-tall reveal">
+            <div class="pair-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle02.jpg" alt="Duffle detail">
             </div>
-            <div class="product-image">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince04.jpg" alt="Key fob">
+            <div class="pair-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle01.jpg" alt="Duffle">
             </div>
         </div>
-    </div>  
 
-    <div class="detail-grid">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince03.jpg" alt="Detail 1">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince02.jpg" alt="Detail 2">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince01.jpg" alt="Detail 3">
+        <div class="spacer-large"></div>
+
+        <!-- Single large -->
+        <div class="single-large reveal">
+            <div class="single-large-inner">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/Elliott01.jpg" alt="Travel pouch">
+            </div>
+        </div>
+
+        <!-- Trio -->
+        <div class="trio reveal">
+            <div class="trio-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/67721425_188177238863438_6011106533277447072_n_18063251449156744.jpg" alt="Detail">
+            </div>
+            <div class="trio-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/67571071_521684258589074_5174133367992623608_n_18092215507065775.jpg" alt="Zipper">
+            </div>
+            <div class="trio-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/66707421_410183442947840_5158620167664511080_n_18066281554120613.jpg" alt="Interior">
+            </div>
+        </div>
     </div>
 
-    <div class="spacer-tall"></div>
+    <!-- Warm section -->
+    <div class="bg-warm">
+        <!-- Text block -->
+        <div class="text-block reveal">
+            <p>Cut edges are creased, sanded smooth and painted by hand. The edge paint is sanded and reapplied as many as five times, before polishing perfectly smooth with heat.</p>
+        </div>
 
-    <div class="full">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pouch01.jpg" alt="Final">
+        <!-- Quartet -->
+        <div class="quartet reveal">
+            <div class="quartet-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_03.jpg" alt="Domino">
+            </div>
+            <div class="quartet-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_01.jpg" alt="Domino detail">
+            </div>
+            <div class="quartet-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_02.jpg" alt="Domino texture">
+            </div>
+            <div class="quartet-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_04.jpg" alt="Domino side">
+            </div>
+        </div>
+
+        <div class="spacer-large"></div>
     </div>
 
-    <div class="note">
-        <p>Made with intent, restraint, and a focus on longevity.</p>
-        <p>Designed for use, not for replacement.</p>
+    <!-- Cool section -->
+    <div class="bg-cool section-block">
+        <!-- Single offset left -->
+        <div class="single-left reveal">
+            <div class="single-left-inner">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Backpack/37843287_2019254421478284_8840080599784882176_n_17954709544128620.jpg" alt="Backpack">
+            </div>
+        </div>
+
+        <!-- Pair -->
+        <div class="pair reveal">
+            <div class="pair-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince04.jpg" alt="Wallet">
+            </div>
+            <div class="pair-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince03.jpg" alt="Wallet detail">
+            </div>
+        </div>
+
+        <!-- Asymmetric reverse -->
+        <div class="pair-asymmetric-reverse reveal">
+            <div class="pair-asymmetric-item-small">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince02.jpg" alt="Interior">
+            </div>
+            <div class="pair-asymmetric-item-large">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince01.jpg" alt="Stitching">
+            </div>
+        </div>
     </div>
 
-    <div class="spacer"></div>
+    <!-- Final section -->
+    <div class="bg-warm">
+        <div class="spacer-large"></div>
 
-    <div class="endnote">
-        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogoCentred.png" alt="Final">
+        <!-- Final single -->
+        <div class="single reveal">
+            <div class="single-inner">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pouch01.jpg" alt="Pouch">
+            </div>
+        </div>
+
+        <!-- Closing -->
+        <section class="closing reveal">
+            <p>Made with intent, restraint, and a focus on longevity.<br>
+            Designed for use, not for replacement.</p>
+            <div class="closing-logo">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogoCentred.png" alt="K Mithani">
+            </div>
+        </section>
     </div>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -5% 0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

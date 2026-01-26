@@ -128,6 +128,7 @@
             font-size: 0.75rem;
             color: rgba(255,255,255,0.7);
             max-width: 280px;
+            padding-bottom: 8px;
         }
 
         /* STATEMENT */
@@ -496,10 +497,39 @@
             padding: 32px;
             border: 1px solid var(--light);
             transition: border-color 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .option-overlay{
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .option:hover {
             border-color: var(--black);
+        }
+
+        .option:hover .option-overlay{
+            opacity: 1;
+        }
+        .option-overlay img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .option-overlay span {
+            font-family: 'Cormorant Garamond', Georgia,serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--white);
         }
 
         .option h3 {
@@ -695,7 +725,7 @@
     <!-- AUDIO -->
     <section class="audio-section">
         <div class="audio-header">
-            <h2>The sound is<br>the proof</h2>
+            <h2>The Sound</h2>
             <p>Warmth and density with clarity across a wide range of sources.</p>
         </div>
         <div class="audio-tracks">
@@ -796,16 +826,22 @@
         <div class="availability-text">
             <span class="label">Availability</span>
             <h2>Two ways to own one</h2>
-            <p>The modular design lends itself equally to a high-end finished product and a hands-on DIY build. Both options planned for limited release.</p>
+            <p>The modular design supports both a fully finished microphone, built and tuned to exacting standards in limited batches, and an open, hands-on DIY build.</p>
         </div>
         <div class="availability-options">
             <div class="option">
+                <div class="option-overlay">
+                <span> Coming Soon </span>
+            </div>
                 <h3>Assembled</h3>
                 <p>Fully assembled and finished microphone. Ribbon professionally installed and tuned. Ready to record. Small batch production.</p>
             </div>
             <div class="option">
+                <div class="option-overlay">
+                <span> Coming Soon </span>
+            </div>
                 <h3>DIY Kit</h3>
-                <p>Component kit with STL files for 3D printing. For those who want to experiment with motor geometry, magnets, and ribbon tuning.</p>
+                <p>Component kit with STL files for 3D printing. Intended for those who wish to build and assemble their own microphone.</p>
             </div>
         </div>
     </section>
