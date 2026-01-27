@@ -1,9 +1,16 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>6064 Catalogue</title>
+
+    <!-- Load Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
         * {
             margin: 0;
@@ -12,15 +19,15 @@
         }
 
         html, body {
-            overflow-x: hidden;
+            overflow: hidden;
             width: 100%;
+            height: 100%;
         }
 
         body {
             font-family: 'Helvetica Neue', sans-serif;
-            background: #fff;
-            color: #1a1a1a;
-            line-height: 1.6;
+            background: #0a0a0a;
+            color: #fff;
         }
 
         a {
@@ -28,7 +35,50 @@
             text-decoration: none;
         }
 
-        /* Header - minimal, fixed */
+        /* Swiper */
+        .swiper-wrapper {
+            /* Heavy initial resistance, smooth release */
+            transition-timing-function: cubic-bezier(0.6, 0.0, 0.2, 1) !important;
+        }
+        .swiper {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper-slide a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 6s ease;
+        }
+
+        .swiper-slide:hover .slide-image {
+            transform: scale(1.03);
+        }
+
+        /* Subtle vignette overlay */
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 25%),
+                linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 35%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Header - fixed over slides */
         .header {
             position: fixed;
             top: 0;
@@ -42,7 +92,7 @@
             pointer-events: none;
         }
 
-        .header a, .header div {
+        .header a {
             pointer-events: auto;
         }
 
@@ -51,7 +101,12 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #fff;
-            mix-blend-mode: difference;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .site-id:hover {
+            opacity: 0.6;
         }
 
         .catalogue-mark {
@@ -59,144 +114,105 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #fff;
-            mix-blend-mode: difference;
+            opacity: 0.9;
         }
 
-        /* Gallery container */
-        .gallery {
-            width: 100%;
-        }
-
-        /* Row system - varies by type */
-        .gallery-row {
-            display: grid;
-            width: 100%;
-        }
-
-        /* Row variations */
-        .row-split-a {
-            grid-template-columns: 1.3fr 0.7fr;
-            height: 100vh;
-        }
-
-        .row-split-b {
-            grid-template-columns: 0.6fr 1.4fr;
-            height: 100vh;
-        }
-
-        .row-split-equal {
-            grid-template-columns: 1fr 1fr;
-            height: 85vh;
-        }
-
-        .row-single {
-            grid-template-columns: 1fr;
-            height: 90vh;
-        }
-
-        .row-trio {
-            grid-template-columns: 1fr 1fr 1fr;
-            height: 70vh;
-        }
-
-        .row-short {
-            height: 70vh;
-        }
-
-        /* Gallery item */
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Images */
-        .gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 6s ease;
-        }
-
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.03);
-        }
-
-        /* Labels - exhibition style */
-        .gallery-label {
+        /* Project label */
+        .slide-label {
             position: absolute;
-            max-width: 280px;
-        }
-
-        /* Label positions */
-        .label-bottom-left {
-            bottom: 40px;
-            left: 40px;
-        }
-
-        .label-bottom-right {
-            bottom: 40px;
-            right: 40px;
-            text-align: right;
-        }
-
-        .label-top-left {
-            top: 100px;
-            left: 40px;
-        }
-
-        .label-top-right {
-            top: 100px;
-            right: 40px;
-            text-align: right;
+            bottom: 50px;
+            left: 50px;
+            z-index: 2;
+            max-width: 400px;
         }
 
         .label-code {
             font-size: 9px;
             letter-spacing: 2px;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 10px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 12px;
+            font-weight: 400;
         }
 
         .label-title {
-            font-size: 14px;
-            font-weight: 400;
+            font-size: 32px;
+            font-weight: 300;
             letter-spacing: 1px;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .mic-text{
+            font-family: 'Cormorant Garamond', Georgia, serif;
         }
 
         .label-type {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 300;
             color: rgba(255,255,255,0.7);
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
-        /* Subtle dividing lines between items */
-        .gallery-item::after {
-            content: '';
+        /* View prompt - appears on hover */
+        .slide-prompt {
             position: absolute;
-            background: rgba(255,255,255,0.1);
-            pointer-events: none;
+            bottom: 55px;
+            right: 50px;
+            z-index: 2;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
         }
 
-        /* Vertical divider (for side-by-side items) */
-        .divider-right::after {
-            top: 12%;
-            bottom: 12%;
-            right: 0;
-            width: 1px;
+        .swiper-slide:hover .slide-prompt {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        /* Horizontal divider (for stacked rows) */
-        .gallery-row:not(:last-child) .gallery-item:last-child::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: rgba(255,255,255,0.08);
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .progress-dot {
+            width: 6px;
+            height: 6px;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot:hover {
+            border-color: rgba(255,255,255,0.8);
+        }
+
+        .progress-dot.active {
+            background: #fff;
+            border-color: #fff;
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            font-variant-numeric: tabular-nums;
         }
 
         /* Footer */
@@ -206,15 +222,51 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
-            pointer-events: none;
         }
 
         .footer-line {
             font-size: 8px;
             letter-spacing: 3px;
-            color: #fff;
+            color: rgba(255,255,255,0.4);
             text-transform: uppercase;
-            mix-blend-mode: difference;
+        }
+
+        /* Scroll hint - first load only */
+        .scroll-hint {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .scroll-hint.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-hint-text {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 10px;
+        }
+
+        .scroll-hint-line {
+            width: 1px;
+            height: 30px;
+            background: rgba(255,255,255,0.3);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { transform: scaleY(1); opacity: 0.3; }
+            50% { transform: scaleY(0.6); opacity: 0.6; }
         }
 
         /* Responsive */
@@ -223,108 +275,163 @@
                 padding: 25px;
             }
 
-            .gallery-row {
-                grid-template-columns: 1fr !important;
-                height: auto !important;
+            .slide-label {
+                bottom: 100px;
+                left: 25px;
+                right: 25px;
+                max-width: none;
             }
 
-            .gallery-item {
-                height: 50vh;
+            .label-title {
+                font-size: 24px;
             }
 
-            .row-single .gallery-item {
-                height: 70vh;
+            .label-type {
+                font-size: 11px;
             }
 
-            .row-trio .gallery-item {
-                height: 45vh;
-            }
-
-            .divider-right::after {
+            .slide-prompt {
                 display: none;
             }
 
-            .gallery-label {
-                max-width: 220px;
+            .progress-bar {
+                right: 20px;
+                gap: 12px;
             }
 
-            .label-bottom-left,
-            .label-top-left {
-                left: 25px;
+            .progress-dot {
+                width: 5px;
+                height: 5px;
             }
 
-            .label-bottom-right,
-            .label-top-right {
+            .slide-counter {
+                bottom: 25px;
                 right: 25px;
             }
 
-            .label-bottom-left,
-            .label-bottom-right {
+            .footer {
                 bottom: 25px;
             }
 
-            .label-top-left,
-            .label-top-right {
-                top: 80px;
-            }
-
-            .footer {
-                bottom: 15px;
+            .scroll-hint {
+                bottom: 80px;
             }
         }
     </style>
 </head>
-
 <body>
+    <!-- Header -->
     <header class="header">
         <a href="https://6064.site" class="site-id">6064</a>
         <div class="catalogue-mark">Catalogue</div>
     </header>
 
-    <main class="gallery">
-        <!-- Row 1: Wide left, narrow right -->
-        <div class="gallery-row row-split-a">
-            <a href="/carino-mio/" class="gallery-item divider-right">
-                <img class="gallery-image" src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/INSTANCES/CarinoMioMicrophone/0B9A1608-Edit.jpg" alt="Cariño Mío">
-                <div class="gallery-label label-bottom-left">
-                    <div class="label-code">6064-26P_CMM</div>
-                    <div class="label-title">Cariño Mío</div>
-                    <div class="label-type">Ribbon Microphone</div>
-                </div>
-            </a>
+    <!-- Progress dots -->
+    <div class="progress-bar">
+        <div class="progress-dot active" data-index="0"></div>
+        <div class="progress-dot" data-index="1"></div>
+    </div>
 
-            <a href="/leatherwork/" class="gallery-item">
-                <img class="gallery-image" src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="Leatherwork">
-                <div class="gallery-label label-bottom-right">
-                    <div class="label-code">6064-26P_KML</div>
-                    <div class="label-title">K  Mithani</div>
-                    <div class="label-type">Handmade Leatherwork</div>
-                </div>
-            </a>
-        </div>
-        <!-- 
-        FUTURE ROWS - examples of how to vary the layout:
-        
-        <div class="gallery-row row-split-b">
-            Narrow left (0.6fr), Wide right (1.4fr)
-        </div>
+    <!-- Slide counter -->
+    <div class="slide-counter">
+        <span class="current">01</span> / <span class="total">02</span>
+    </div>
 
-        <div class="gallery-row row-single">
-            Full width hero for a featured project
-        </div>
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+        <div class="scroll-hint-text">Scroll</div>
+        <div class="scroll-hint-line"></div>
+    </div>
 
-        <div class="gallery-row row-split-equal row-short">
-            Equal split, shorter height (70vh)
-        </div>
+    <!-- Swiper -->
+    <div class="swiper catalogue-swiper">
+        <div class="swiper-wrapper">
+            <!-- Project 1: Cariño Mío -->
+            <div class="swiper-slide">
+                <a href="/carino-mio/">
+                    <img class="slide-image" src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/INSTANCES/CarinoMioMicrophone/0B9A1608-Edit.jpg" alt="Cariño Mío">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-label">
+                        <div class="label-code">6064-26P_CMM</div>
+                        <div class="label-title mic-text">Cariño Mío</div>
+                        <div class="label-type">Ribbon Microphone</div>
+                    </div>
+                    <div class="slide-prompt">View Project →</div>
+                </a>
+            </div>
 
-        <div class="gallery-row row-trio">
-            Three across for smaller/related projects
+            <!-- Project 2: K Mithani Leatherwork -->
+            <div class="swiper-slide">
+                <a href="/leatherwork/">
+                    <img class="slide-image" src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="K Mithani Leatherwork">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-label">
+                        <div class="label-code">6064-26P_KML</div>
+                        <div class="label-title"><strong>K&nbsp;&nbsp;Mithani</strong></div>
+                        <div class="label-type">Handmade Leatherwork</div>
+                    </div>
+                    <div class="slide-prompt">View Project →</div>
+                </a>
+            </div>
         </div>
-        -->
-    </main>
+    </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-line">2026</div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.catalogue-swiper', {
+            direction: 'vertical',
+            slidesPerView: 1,
+            speed: 500,              
+            mousewheel: {
+                releaseOnEdges: true,
+                sensitivity: 0.8,      
+                thresholdDelta: 20,    
+            },
+            keyboard: { enabled: true },
+            resistance: true,
+            resistanceRatio: 0.7,     
+            touchRatio: 0.6,       
+        });
+
+        // Elements
+        const dots = document.querySelectorAll('.progress-dot');
+        const currentCounter = document.querySelector('.slide-counter .current');
+        const scrollHint = document.querySelector('.scroll-hint');
+
+        // Update on slide change
+        swiper.on('slideChange', function() {
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[swiper.activeIndex].classList.add('active');
+            
+            // Update counter
+            currentCounter.textContent = String(swiper.activeIndex + 1).padStart(2, '0');
+            
+            // Hide scroll hint after first interaction
+            scrollHint.classList.add('hidden');
+        });
+
+        // Click dots to navigate
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                swiper.slideTo(index);
+            });
+        });
+
+        // Hide scroll hint on any scroll
+        window.addEventListener('wheel', () => {
+            scrollHint.classList.add('hidden');
+        }, { once: true });
+
+        window.addEventListener('touchstart', () => {
+            scrollHint.classList.add('hidden');
+        }, { once: true });
+    </script>
 </body>
 </html>

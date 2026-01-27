@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6064 Catalogue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Header - minimal, fixed */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .header a, .header div {
+            pointer-events: auto;
+        }
+
+        .site-id {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        .catalogue-mark {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        /* Gallery container */
+        .gallery {
+            width: 100%;
+        }
+
+        /* Row system - varies by type */
+        .gallery-row {
+            display: grid;
+            width: 100%;
+        }
+
+        /* Row variations */
+        .row-split-a {
+            grid-template-columns: 1.3fr 0.7fr;
+            height: 100vh;
+        }
+
+        .row-split-b {
+            grid-template-columns: 0.6fr 1.4fr;
+            height: 100vh;
+        }
+
+        .row-split-equal {
+            grid-template-columns: 1fr 1fr;
+            height: 85vh;
+        }
+
+        .row-single {
+            grid-template-columns: 1fr;
+            height: 90vh;
+        }
+
+        .row-trio {
+            grid-template-columns: 1fr 1fr 1fr;
+            height: 70vh;
+        }
+
+        .row-short {
+            height: 70vh;
+        }
+
+        /* Gallery item */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Images */
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 6s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.03);
+        }
+
+        /* Labels - exhibition style */
+        .gallery-label {
+            position: absolute;
+            max-width: 280px;
+        }
+
+        /* Label positions */
+        .label-bottom-left {
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .label-bottom-right {
+            bottom: 40px;
+            right: 40px;
+            text-align: right;
+        }
+
+        .label-top-left {
+            top: 100px;
+            left: 40px;
+        }
+
+        .label-top-right {
+            top: 100px;
+            right: 40px;
+            text-align: right;
+        }
+
+        .label-code {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 10px;
+        }
+
+        .label-title {
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .label-type {
+            font-size: 11px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.5px;
+        }
+
+        /* Subtle dividing lines between items */
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            pointer-events: none;
+        }
+
+        /* Vertical divider (for side-by-side items) */
+        .divider-right::after {
+            top: 12%;
+            bottom: 12%;
+            right: 0;
+            width: 1px;
+        }
+
+        /* Horizontal divider (for stacked rows) */
+        .gallery-row:not(:last-child) .gallery-item:last-child::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .footer-line {
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: #fff;
+            text-transform: uppercase;
+            mix-blend-mode: difference;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 25px;
+            }
+
+            .gallery-row {
+                grid-template-columns: 1fr !important;
+                height: auto !important;
+            }
+
+            .gallery-item {
+                height: 50vh;
+            }
+
+            .row-single .gallery-item {
+                height: 70vh;
+            }
+
+            .row-trio .gallery-item {
+                height: 45vh;
+            }
+
+            .divider-right::after {
+                display: none;
+            }
+
+            .gallery-label {
+                max-width: 220px;
+            }
+
+            .label-bottom-left,
+            .label-top-left {
+                left: 25px;
+            }
+
+            .label-bottom-right,
+            .label-top-right {
+                right: 25px;
+            }
+
+            .label-bottom-left,
+            .label-bottom-right {
+                bottom: 25px;
+            }
+
+            .label-top-left,
+            .label-top-right {
+                top: 80px;
+            }
+
+            .footer {
+                bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="https://6064.site" class="site-id">6064</a>
+        <div class="catalogue-mark">Catalogue</div>
+    </header>
+
+    <main class="gallery">
+        <!-- Row 1: Wide left, narrow right -->
+        <div class="gallery-row row-split-a">
+            <a href="/carino-mio/" class="gallery-item divider-right">
+                <img class="gallery-image" src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/INSTANCES/CarinoMioMicrophone/0B9A1608-Edit.jpg" alt="Cariño Mío">
+                <div class="gallery-label label-bottom-left">
+                    <div class="label-code">6064-26P_CMM</div>
+                    <div class="label-title">Cariño Mío</div>
+                    <div class="label-type">Ribbon Microphone</div>
+                </div>
+            </a>
+
+            <a href="/leatherwork/" class="gallery-item">
+                <img class="gallery-image" src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="Leatherwork">
+                <div class="gallery-label label-bottom-right">
+                    <div class="label-code">6064-26P_KML</div>
+                    <div class="label-title">K  Mithani</div>
+                    <div class="label-type">Handmade Leatherwork</div>
+                </div>
+            </a>
+        </div>
+        <!-- 
+        FUTURE ROWS - examples of how to vary the layout:
+        
+        <div class="gallery-row row-split-b">
+            Narrow left (0.6fr), Wide right (1.4fr)
+        </div>
+
+        <div class="gallery-row row-single">
+            Full width hero for a featured project
+        </div>
+
+        <div class="gallery-row row-split-equal row-short">
+            Equal split, shorter height (70vh)
+        </div>
+
+        <div class="gallery-row row-trio">
+            Three across for smaller/related projects
+        </div>
+        -->
+    </main>
+
+    <footer class="footer">
+        <div class="footer-line">2026</div>
+    </footer>
+</body>
+</html>
