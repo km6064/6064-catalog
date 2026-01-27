@@ -25,13 +25,6 @@
             object-fit: cover;
         }
 
-        /* Consistent page margins */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
-        }
-
         /* Header */
         .header {
             padding: 80px 50px;
@@ -42,18 +35,21 @@
             margin: 0 auto;
         }
 
-        .header-left h1 {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
+        .header-left {
+            position: relative;
+            width: 80px;
             height: 280px;
         }
 
-        .header-left h1 img {
+        .header-left img {
+            position: absolute;
+            top: 0;
+            left: 0;
             height: 60px;
             width: auto;
             transform: rotate(90deg);
             transform-origin: top left;
-            margin-left: 55px;
+            margin-left: 60px;
         }
 
         .header-right {
@@ -94,13 +90,6 @@
             background: #f5f4f2;
         }
 
-        /* Section spacing */
-        .section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
-        }
-
         /* Section backgrounds */
         .bg-warm {
             background: #faf9f7;
@@ -114,7 +103,6 @@
             background: #fff;
         }
 
-        /* Section wrapper with background */
         .section-block {
             padding: 80px 0;
         }
@@ -176,7 +164,11 @@
             max-width: 450px;
         }
 
-        /* Single image - centered, modest size */
+        /* ===================== */
+        /* GRID-BASED LAYOUTS    */
+        /* ===================== */
+
+        /* Single image - centered */
         .single {
             padding: 60px 50px;
             max-width: 1400px;
@@ -189,7 +181,20 @@
             height: 520px;
         }
 
-        /* Single image - larger */
+        /* Single hero - prominent but contained */
+        .single-hero {
+            padding: 40px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .single-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            height: 580px;
+        }
+
+        /* Single - larger */
         .single-large {
             padding: 60px 50px;
             max-width: 1400px;
@@ -202,7 +207,7 @@
             height: 600px;
         }
 
-        /* Pair - equal sizes */
+        /* Pair - equal */
         .pair {
             padding: 50px 50px;
             max-width: 1400px;
@@ -230,7 +235,7 @@
             height: 600px;
         }
 
-        /* Trio - equal */
+        /* Trio */
         .trio {
             padding: 50px 50px;
             max-width: 1400px;
@@ -244,7 +249,7 @@
             height: 400px;
         }
 
-        /* Quartet - product grid style */
+        /* Quartet */
         .quartet {
             padding: 50px 50px;
             max-width: 1400px;
@@ -258,7 +263,7 @@
             height: 320px;
         }
 
-        /* Asymmetric pair - one larger */
+        /* Asymmetric pair */
         .pair-asymmetric {
             padding: 50px 50px;
             max-width: 1400px;
@@ -277,7 +282,6 @@
             height: 400px;
         }
 
-        /* Reverse asymmetric */
         .pair-asymmetric-reverse {
             padding: 50px 50px;
             max-width: 1400px;
@@ -314,7 +318,91 @@
             margin-left: auto;
         }
 
-        /* Spacer */
+        /* ===================== */
+        /* FLOATING LAYOUTS      */
+        /* (from alt1 - more organic feel) */
+        /* ===================== */
+
+        /* Float - centered, natural aspect ratio */
+        .float {
+            padding: 0 12vw;
+            margin: 100px auto;
+            max-width: 1400px;
+        }
+
+        .float img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Float - left aligned */
+        .float-left {
+            padding: 0 25vw 0 8vw;
+            margin: 80px auto;
+            max-width: 1400px;
+        }
+
+        .float-left img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Float - right aligned */
+        .float-right {
+            padding: 0 8vw 0 25vw;
+            margin: 80px auto;
+            max-width: 1400px;
+        }
+
+        .float-right img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Float - small, very restrained */
+        .float-small {
+            padding: 0 28vw;
+            margin: 80px auto;
+            max-width: 1400px;
+        }
+
+        .float-small img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Offset pair - staggered vertically */
+        .offset {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15vw;
+            padding: 0 10vw;
+            margin: 100px auto;
+            max-width: 1400px;
+        }
+
+        .offset-item {
+            /* Natural height based on image */
+        }
+
+        .offset-item-drop {
+            padding-top: 12vh;
+        }
+
+        .offset img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* ===================== */
+        /* SPACERS               */
+        /* ===================== */
+
         .spacer {
             height: 40px;
         }
@@ -323,7 +411,10 @@
             height: 80px;
         }
 
-        /* Closing */
+        /* ===================== */
+        /* CLOSING               */
+        /* ===================== */
+
         .closing {
             padding: 120px 50px 100px;
             text-align: center;
@@ -360,20 +451,24 @@
             opacity: 1;
         }
 
-        /* Responsive */
+        /* ===================== */
+        /* RESPONSIVE            */
+        /* ===================== */
+
         @media (max-width: 968px) {
             .header {
                 flex-direction: column;
                 padding: 50px 25px;
             }
 
-            .header-left h1 {
-                writing-mode: horizontal-tb;
+            .header-left {
+                width: auto;
                 height: auto;
                 margin-bottom: 30px;
             }
 
-            .header-left h1 img {
+            .header-left img {
+                position: relative;
                 width: 160px;
                 height: auto;
                 transform: none;
@@ -389,7 +484,7 @@
                 display: none;
             }
 
-            .section,
+            /* Reduce padding on all containers */
             .single,
             .single-large,
             .single-left,
@@ -407,65 +502,107 @@
                 padding-right: 20px;
             }
 
+            /* Singles - full width, shorter */
             .single-inner {
                 max-width: 100%;
-                height: 400px;
+                height: 380px;
+            }
+
+            .single-hero-inner {
+                max-width: 100%;
+                height: 420px;
             }
 
             .single-large-inner {
                 max-width: 100%;
-                height: 450px;
+                height: 420px;
             }
 
             .single-left-inner,
             .single-right-inner {
                 max-width: 100%;
-                height: 350px;
+                height: 320px;
+                margin: 0 auto;
             }
 
+            /* PAIRS STAY AS PAIRS - just shorter */
             .pair,
             .pair-tall {
-                grid-template-columns: 1fr;
-                gap: 15px;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
             }
 
             .pair-item {
-                height: 380px;
+                height: 240px;
             }
 
             .pair-tall .pair-item {
-                height: 420px;
+                height: 280px;
             }
 
+            /* Asymmetric pairs become equal on mobile */
             .pair-asymmetric,
             .pair-asymmetric-reverse {
-                grid-template-columns: 1fr;
-                gap: 15px;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
             }
 
             .pair-asymmetric-item-large,
             .pair-asymmetric-item-small {
-                height: 380px;
-            }
-
-            .trio {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .trio-item {
-                height: 320px;
-            }
-
-            .quartet {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-            }
-
-            .quartet-item {
                 height: 240px;
             }
 
+            /* TRIO becomes 3-up but shorter */
+            .trio {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .trio-item {
+                height: 180px;
+            }
+
+            /* Quartet becomes 2x2 grid */
+            .quartet {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .quartet-item {
+                height: 200px;
+            }
+
+            /* Floating layouts - tighter padding */
+            .float {
+                padding: 0 20px;
+                margin: 60px auto;
+            }
+
+            .float-left,
+            .float-right {
+                padding: 0 20px;
+                margin: 50px auto;
+            }
+
+            .float-small {
+                padding: 0 15%;
+                margin: 50px auto;
+            }
+
+            /* Offset - stack with slight indent preserved */
+            .offset {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 20px;
+                margin: 60px auto;
+            }
+
+            .offset-item-drop {
+                padding-top: 0;
+                padding-left: 15%;
+            }
+
+            /* Text blocks */
             .text-block {
                 padding-top: 60px;
                 padding-bottom: 60px;
@@ -481,11 +618,74 @@
                 padding-bottom: 50px;
             }
 
+            .text-block-right {
+                justify-content: flex-start;
+            }
+
             .spacer { height: 20px; }
             .spacer-large { height: 40px; }
 
+            .section-block {
+                padding: 50px 0;
+            }
+
             .closing {
                 padding: 80px 25px 60px;
+            }
+
+            .closing-logo img {
+                width: 140px;
+            }
+        }
+
+        /* Smaller phones */
+        @media (max-width: 480px) {
+            .pair,
+            .pair-tall,
+            .pair-asymmetric,
+            .pair-asymmetric-reverse {
+                gap: 8px;
+            }
+
+            .pair-item {
+                height: 200px;
+            }
+
+            .pair-tall .pair-item {
+                height: 220px;
+            }
+
+            .pair-asymmetric-item-large,
+            .pair-asymmetric-item-small {
+                height: 200px;
+            }
+
+            .trio {
+                gap: 6px;
+            }
+
+            .trio-item {
+                height: 140px;
+            }
+
+            .quartet-item {
+                height: 160px;
+            }
+
+            .single-inner {
+                height: 320px;
+            }
+
+            .single-hero-inner {
+                height: 360px;
+            }
+
+            .single-large-inner {
+                height: 360px;
+            }
+
+            .float-small {
+                padding: 0 10%;
             }
         }
     </style>
@@ -495,7 +695,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-left">
-            <h1><img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogotopLine.png" alt="K Mithani Leather"></h1>
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogotopLine.png" alt="K Mithani Leather">
         </div>
         <div class="header-right">
             <div class="catalog">6064-26P_KML</div>
@@ -511,21 +711,16 @@
 
     <!-- Opening section -->
     <div class="bg-warm">
-        <!-- Opening text -->
-        <div class="text-block reveal">
-            <p>Hand-stitched leather goods, defined by traditional craft and design restraint.</p>
-        </div>
+        <div class="spacer-large"></div>
 
-        <!-- Single centered -->
-        <div class="single reveal">
-            <div class="single-inner">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Microwallets01.jpg" alt="Cardholder">
+        <!-- Hero single - constrained but prominent -->
+        <div class="single-hero reveal">
+            <div class="single-hero-inner">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Midnight_Clutch/hero01.jpg" alt="Cardholder">
             </div>
         </div>
 
-        <div class="spacer"></div>
-
-        <!-- Pair -->
+        <!-- Pair - stays as pair on mobile -->
         <div class="pair reveal">
             <div class="pair-item">
                 <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/EdgeFinish02.jpg" alt="Edge detail">
@@ -535,15 +730,14 @@
             </div>
         </div>
 
-        <!-- Text right -->
         <div class="text-block-right reveal">
-            <p>Every piece is entirely hand-stitched. Saddle stitching passes thread through both sides of the leather, creating a locked stitch that is more durable and repairable than machine construction.</p>
+            <p>Every piece is entirely hand-stitched. Saddle stitching passes thread through both sides of the leather, creating a locked stitch more durable and repairable than machine construction.</p>
         </div>
     </div>
 
     <!-- Cool section -->
     <div class="bg-cool section-block">
-        <!-- Trio -->
+        <!-- Trio - stays as trio on mobile -->
         <div class="trio reveal">
             <div class="trio-item">
                 <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/litheblack01.jpg" alt="Lithe black">
@@ -558,42 +752,32 @@
 
         <div class="spacer-large"></div>
 
-        <!-- Text center -->
         <div class="text-block-center reveal">
             <h2>Materials</h2>
             <p>Full grain leathers sourced from historic European tanneries. French goatskin linings. Waxed linen thread.</p>
         </div>
 
-        <!-- Asymmetric pair -->
-        <div class="pair-asymmetric reveal">
-            <div class="pair-asymmetric-item-large">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Pouch02.jpg" alt="Pouch">
+        <!-- Float left - off-kilter single -->
+        <div class="float-left reveal">
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Pouch02.jpg" alt="Pouch">
+        </div>
+
+        <!-- Offset pair - staggered vertically -->
+        <div class="offset reveal">
+            <div class="offset-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle02.jpg" alt="Duffle detail">
             </div>
-            <div class="pair-asymmetric-item-small">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Microwallets03.jpg" alt="Detail">
+            <div class="offset-item offset-item-drop">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle01.jpg" alt="Duffle">
             </div>
         </div>
     </div>
 
     <!-- White section -->
     <div class="bg-white section-block">
-        <!-- Pair tall -->
-        <div class="pair-tall reveal">
-            <div class="pair-item">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle02.jpg" alt="Duffle detail">
-            </div>
-            <div class="pair-item">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle01.jpg" alt="Duffle">
-            </div>
-        </div>
-
-        <div class="spacer-large"></div>
-
-        <!-- Single large -->
-        <div class="single-large reveal">
-            <div class="single-large-inner">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/Elliott01.jpg" alt="Travel pouch">
-            </div>
+        <!-- Float right -->
+        <div class="float-right reveal">
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/Elliott01.jpg" alt="Travel pouch">
         </div>
 
         <!-- Trio -->
@@ -612,12 +796,11 @@
 
     <!-- Warm section -->
     <div class="bg-warm">
-        <!-- Text block -->
         <div class="text-block reveal">
             <p>Cut edges are creased, sanded smooth and painted by hand. The edge paint is sanded and reapplied as many as five times, before polishing perfectly smooth with heat.</p>
         </div>
 
-        <!-- Quartet -->
+        <!-- Quartet - becomes 2x2 on mobile -->
         <div class="quartet reveal">
             <div class="quartet-item">
                 <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_03.jpg" alt="Domino">
@@ -638,29 +821,27 @@
 
     <!-- Cool section -->
     <div class="bg-cool section-block">
-        <!-- Single offset left -->
-        <div class="single-left reveal">
-            <div class="single-left-inner">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Backpack/37843287_2019254421478284_8840080599784882176_n_17954709544128620.jpg" alt="Backpack">
+        <!-- Float small - restrained -->
+        <div class="float-small reveal">
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Backpack/37843287_2019254421478284_8840080599784882176_n_17954709544128620.jpg" alt="Backpack">
+        </div>
+
+        <!-- Offset pair - staggered -->
+        <div class="offset reveal">
+            <div class="offset-item offset-item-drop">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince04.jpg" alt="Wallet">
+            </div>
+            <div class="offset-item">
+                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince03.jpg" alt="Wallet detail">
             </div>
         </div>
 
         <!-- Pair -->
         <div class="pair reveal">
             <div class="pair-item">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince04.jpg" alt="Wallet">
-            </div>
-            <div class="pair-item">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince03.jpg" alt="Wallet detail">
-            </div>
-        </div>
-
-        <!-- Asymmetric reverse -->
-        <div class="pair-asymmetric-reverse reveal">
-            <div class="pair-asymmetric-item-small">
                 <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince02.jpg" alt="Interior">
             </div>
-            <div class="pair-asymmetric-item-large">
+            <div class="pair-item">
                 <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince01.jpg" alt="Stitching">
             </div>
         </div>
@@ -670,14 +851,11 @@
     <div class="bg-warm">
         <div class="spacer-large"></div>
 
-        <!-- Final single -->
-        <div class="single reveal">
-            <div class="single-inner">
-                <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pouch01.jpg" alt="Pouch">
-            </div>
+        <!-- Float small - quiet ending -->
+        <div class="float-small reveal">
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pouch01.jpg" alt="Pouch">
         </div>
 
-        <!-- Closing -->
         <section class="closing reveal">
             <p>Made with intent, restraint, and a focus on longevity.<br>
             Designed for use, not for replacement.</p>

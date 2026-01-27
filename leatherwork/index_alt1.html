@@ -1,0 +1,514 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6064-26P_KML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', 'Hiragino Sans', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Subtle reveal */
+        .reveal {
+            opacity: 0;
+            transition: opacity 1.4s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+        }
+
+        /* Header */
+        .header {
+            padding: 80px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-left {
+            position: relative;
+            width: 80px;
+            height: 280px;
+        }
+
+        .header-left img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 60px;
+            width: auto;
+            transform: rotate(90deg);
+            transform-origin: top left;
+            margin-left: 60px;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .catalog {
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #999;
+        }
+
+        .title {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Opening hero - asymmetric split */
+        .hero-opening {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+
+        .hero-void {
+            background: #fafafa;
+        }
+
+        .hero-opening img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Floating single image - the core unit */
+        .float {
+            padding: 0 12vw;
+            margin: 18vh 0;
+        }
+
+        .float img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Floating image - left aligned, narrower */
+        .float-left {
+            padding: 0 30vw 0 8vw;
+            margin: 15vh 0;
+        }
+
+        .float-left img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Floating image - right aligned, narrower */
+        .float-right {
+            padding: 0 8vw 0 30vw;
+            margin: 15vh 0;
+        }
+
+        .float-right img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Small floating image - very restrained */
+        .float-small {
+            padding: 0 32vw;
+            margin: 12vh 0;
+        }
+
+        .float-small img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Asymmetric pair - unequal sizing */
+        .pair {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 20px;
+            padding: 0 8vw;
+            margin: 18vh 0;
+            align-items: end;
+        }
+
+        .pair img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .pair-reverse {
+            grid-template-columns: 1.8fr 1fr;
+        }
+
+        /* Trio with strange proportions */
+        .trio {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 1fr;
+            gap: 15px;
+            padding: 0 6vw;
+            margin: 18vh 0;
+            align-items: end;
+        }
+
+        .trio img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Offset pair - staggered vertically */
+        .offset {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25vw;
+            padding: 0 10vw;
+            margin: 20vh 0;
+        }
+
+        .offset-left {
+            padding-top: 15vh;
+        }
+
+        .offset img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Statement text */
+        .statement {
+            padding: 12vh 12vw;
+            max-width: 800px;
+        }
+
+        .statement p {
+            font-size: clamp(17px, 2vw, 22px);
+            font-weight: 300;
+            line-height: 2;
+            letter-spacing: 0.01em;
+        }
+
+        .statement-right {
+            padding: 12vh 12vw;
+            max-width: 600px;
+            margin-left: auto;
+        }
+
+        .statement-right p {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 2.2;
+            color: #555;
+        }
+
+        .statement-center {
+            padding: 15vh 15vw;
+            text-align: center;
+        }
+
+        .statement-center p {
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 2.4;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+
+        /* Quiet spacer */
+        .breath {
+            height: 8vh;
+        }
+
+        .breath-long {
+            height: 15vh;
+        }
+
+        /* Closing */
+        .closing {
+            padding: 20vh 60px 12vh;
+            text-align: center;
+        }
+
+        .closing-text {
+            font-size: 13px;
+            line-height: 2.4;
+            font-weight: 300;
+            color: #666;
+            max-width: 450px;
+            margin: 0 auto 60px;
+        }
+
+        .closing-logo img {
+            width: 200px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .header {
+                flex-direction: column;
+                padding: 60px 25px;
+            }
+
+            .header-left h1 {
+                writing-mode: horizontal-tb;
+                height: auto;
+                margin-bottom: 40px;
+            }
+
+            .header-left h1 img {
+                width: 180px;
+                height: auto;
+                transform: none;
+                margin-left: 0;
+            }
+
+            .hero-opening {
+                grid-template-columns: 1fr;
+                max-height: none;
+            }
+
+            .hero-void {
+                display: none;
+            }
+
+            .hero-opening img {
+                height: 65vh;
+            }
+
+            .float,
+            .float-left,
+            .float-right,
+            .float-small {
+                padding: 0 25px;
+                margin: 10vh 0;
+            }
+
+            .pair,
+            .pair-reverse {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 25px;
+                margin: 10vh 0;
+            }
+
+            .trio {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 25px;
+                margin: 10vh 0;
+            }
+
+            .offset {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 25px;
+                margin: 10vh 0;
+            }
+
+            .offset-left {
+                padding-top: 0;
+            }
+
+            .statement,
+            .statement-right,
+            .statement-center {
+                padding: 8vh 25px;
+            }
+
+            .statement {
+                max-width: 100%;
+            }
+
+            .statement-right {
+                max-width: 100%;
+                margin-left: 0;
+            }
+
+            .breath { height: 5vh; }
+            .breath-long { height: 8vh; }
+
+            .closing {
+                padding: 15vh 25px 10vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <h1><img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogotopLine.png" alt="K Mithani Leather"></h1>
+        </div>
+        <div class="header-right">
+            <div class="catalog">6064-26P_KML</div>
+            <div class="title">Fine Leathergoods</div>
+        </div>
+    </header>
+
+    <!-- Opening -->
+    <section class="hero-opening">
+        <div class="hero-void"></div>
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="Leather">
+    </section>
+
+    <!-- Opening statement -->
+    <div class="statement reveal">
+        <p>Hand-stitched leather goods, defined by traditional craft and design restraint.</p>
+    </div>
+
+    <div class="breath-long"></div>
+
+    <!-- Floating image - centered -->
+    <div class="float reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Midnight_Clutch/hero01.jpg" alt="Cardholder">
+    </div>
+
+    <!-- Asymmetric pair -->
+    <div class="pair reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/EdgeFinish02.jpg" alt="Edge detail">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/EdgeFinish03.jpg" alt="Stitching">
+    </div>
+
+    <div class="breath"></div>
+
+    <!-- Statement right -->
+    <div class="statement-right reveal">
+        <p>Every piece is entirely hand-stitched. Saddle stitching passes thread through both sides of the leather, creating a locked stitch more durable and repairable than machine construction.</p>
+    </div>
+
+    <!-- Small float -->
+    <div class="float-small reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Microwallets03.jpg" alt="Detail">
+    </div>
+
+    <div class="breath-long"></div>
+
+    <!-- Trio -->
+    <div class="trio reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/litheblack01.jpg" alt="Lithe black">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/lithegreydetail01.jpg" alt="Lithe detail">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Lithe/lithe_grey.jpg" alt="Lithe grey">
+    </div>
+
+    <!-- Float left -->
+    <div class="float-left reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Pouch02.jpg" alt="Pouch">
+    </div>
+
+    <!-- Offset pair -->
+    <div class="offset reveal">
+        <div>
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle02.jpg" alt="Duffle detail">
+        </div>
+        <div class="offset-left">
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Duffle01.jpg" alt="Duffle">
+        </div>
+    </div>
+
+    <div class="breath-long"></div>
+
+    <!-- Float right -->
+    <div class="float-right reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/Elliott01.jpg" alt="Travel pouch">
+    </div>
+
+    <!-- Pair reverse -->
+    <div class="pair pair-reverse reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/67721425_188177238863438_6011106533277447072_n_18063251449156744.jpg" alt="Detail">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Elliott_Clutch/67571071_521684258589074_5174133367992623608_n_18092215507065775.jpg" alt="Zipper">
+    </div>
+
+    <!-- Statement -->
+    <div class="statement reveal">
+        <p>Cut edges are creased, sanded smooth and painted by hand. The edge paint is sanded and reapplied as many as five times, before polishing perfectly smooth with heat.</p>
+    </div>
+
+    <!-- Trio - Domino -->
+    <div class="trio reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_03.jpg" alt="Domino">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_01.jpg" alt="Domino detail">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Domino_Clutch/domino_02.jpg" alt="Domino texture">
+    </div>
+
+    <div class="breath-long"></div>
+
+    <!-- Float -->
+    <div class="float reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/Backpack/37843287_2019254421478284_8840080599784882176_n_17954709544128620.jpg" alt="Backpack">
+    </div>
+
+    <!-- Offset pair -->
+    <div class="offset reveal">
+        <div class="offset-left">
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince04.jpg" alt="Wallet">
+        </div>
+        <div>
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince03.jpg" alt="Wallet detail">
+        </div>
+    </div>
+
+    <!-- Pair -->
+    <div class="pair reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince02.jpg" alt="Interior">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pince01.jpg" alt="Stitching">
+    </div>
+
+    <div class="breath-long"></div>
+
+    <!-- Final float -->
+    <div class="float-small reveal">
+        <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/pouch01.jpg" alt="Pouch">
+    </div>
+
+    <!-- Closing -->
+    <section class="closing">
+        <div class="closing-text reveal">
+            <p>Made with intent, restraint, and a focus on longevity.</p>
+            <p>Designed for use, not for replacement.</p>
+        </div>
+        <div class="closing-logo reveal">
+            <img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/webLogoCentred.png" alt="K Mithani">
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -5% 0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

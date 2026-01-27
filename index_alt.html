@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>6064 Catalogue</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Helvetica Neue', sans-serif;
+			background: #FFF;
+			color: #000;
+			line-height: 2;
+		}
+
+		/* Custom cursor - only shows on project cards */
+		.cursor {
+			width: 50px;
+			height: 50px;
+			background: #fffff0;
+			border: 1px solid #000;
+			border-radius: 50%;
+			position: fixed;
+			pointer-events: none;
+			z-index: 9999;
+			/*transition: transform 0.25s ease, opacity 0.15s ease;*/
+			transition: transform 0.45s cubic-bezier(0.08, 0.59, 0.265, 1.55), opacity 0.15s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 8px;
+			letter-spacing: .5px;
+			opacity: 0;
+		}
+
+		.cursor.active {
+			opacity: 1;
+		}
+
+		.cursor.hover {
+			transform: scale(1.5);
+		}
+
+		.project-card {
+			cursor: none;
+		}
+
+		.header{
+			padding: 60px 40px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.back-link {
+			font-size: 11px;
+			letter-spacing: 2px;
+			text-decoration: none;
+			color: #000;
+			text-transform: uppercase;
+		}
+
+		.back-link:hover {
+			opacity: 0.6;
+		}
+
+		.header p{
+			font-size: 12px;
+			font-weight: 200;
+			letter-spacing: 2px;
+			writing-mode: vertical-rl;
+			text-transform: uppercase;
+		}
+
+		.grid{
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2px;
+			background: #000;
+			transition: all 0.4s ease;
+		}
+
+
+		.project-card{
+			padding: 120px 40px;
+			text-decoration: none;
+			color: #000;
+			transition: all 0.4s ease;
+			position: relative;
+			overflow: hidden;
+		}
+
+		/* colour blocks */
+		.project-card:nth-child(1) { background: #6f7c93; }
+		.project-card:nth-child(2) { background: #d6ccc4; }
+		.project-card:nth-child(3) { background: #d6ccc4; }
+		.project-card:nth-child(4) { background: #d6ccc4; }
+
+		/* Image preview overlay */
+		.project-preview{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.3;
+			transition: opacity 0.4s ease;
+			pointer-events: none;
+		}
+
+		.project-preview img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.project-card:hover .project-preview{
+			opacity: 1;
+		}
+
+		/* Content container */
+		.project-content{
+			position: relative;
+			z-index: 2;
+			transition: all 0.4s ease;
+		}
+
+		.project-card:hover .project-content{
+			transform: translateY(-10px);
+			color: #fff;
+			text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		}
+
+		.project-number{
+			font-size: 11px;
+			letter-spacing: 2px;
+			margin-bottom: 20px;
+			opacity: 0.7;
+		}
+
+		.project-title{
+			font-size: 48px;
+			font-weight: 700;
+			margin-bottom: 12px;
+			letter-spacing: -1px;
+		}
+
+		.project-subtitle{
+			font-size: 16px;
+			font-weight: 300;
+			letter-spacing: 1px;
+		}
+
+		/* Footer */
+		.footer {
+			padding: 60px 40px;
+			text-align: center;
+			border-top: 1px solid #ddd;
+		}
+
+		.footer-meta {
+			font-size: 10px;
+			letter-spacing: 2px;
+			color: #999;
+			text-transform: uppercase;
+		}
+
+		@media (max-width: 900px){
+			.grid{
+				grid-template-columns: 1fr;
+				max-width: none;
+			}
+			.project-title{
+				font-size: 32px;
+			}
+			.project-card{
+				padding: 80px 30px;
+				cursor: pointer;
+			}
+			.project-preview{
+				opacity: 0.3;
+			}
+			.project-card:active .project-preview{
+				opacity: 1;
+			}
+			.cursor {
+				display: none;
+			}
+			.header p {
+				writing-mode: horizontal-tb;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<div class="cursor">View</div>
+
+	<div class="header">
+		<a href="https://6064.site" class="back-link">← 6064.site</a> 
+		<p>Catalogue</p>
+	</div>
+
+	<div class="grid">
+		<a href="/carino-mio/" class="project-card">
+			<div class="project-preview">
+				<img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/INSTANCES/CarinoMioMicrophone/0B9A1608-Edit.jpg" alt="Cariño Mío">
+			</div>
+			<div class="project-content">
+				<div class="project-number">6064-26P_CMM</div>
+				<div class="project-title">Cariño Mío</div>
+				<div class="project-subtitle">Ribbon Microphone</div>
+			</div>
+		</a>
+		<a href="/leatherwork/" class="project-card">
+			<div class="project-preview">
+				<img src="https://webpreviews6064.s3.eu-north-1.amazonaws.com/OUTPUTS/LEATHER/2017-09-18-0001-2crop.jpg" alt="leatherwork">
+			</div>
+			<div class="project-content">
+				<div class="project-number">6064-26P_KML</div>
+				<div class="project-title">K&nbsp;&nbsp;Mithani</div>
+				<div class="project-subtitle">Handmade Leatherwork</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="footer">
+		<div class="footer-meta">6064 / Catalogue [2026]</div>
+	</div>
+
+	<script>
+
+
+		// Custom cursor - only on project cards
+		const cursor = document.querySelector('.cursor');
+		const projectCards = document.querySelectorAll('.project-card');
+
+		document.addEventListener('mousemove', (e) => {
+			cursor.style.left = e.clientX - 25 + 'px';
+			cursor.style.top = e.clientY - 25 + 'px';
+		});
+
+		projectCards.forEach(card => {
+			card.addEventListener('mouseenter', () => {
+				cursor.classList.add('active');
+				cursor.classList.add('hover');
+			});
+			card.addEventListener('mouseleave', () => {
+				cursor.classList.remove('active');
+				cursor.classList.remove('hover');
+			});
+		});
+	</script>
+
+</body>
+</html>
