@@ -16,10 +16,16 @@ export default async (req) => {
     body: JSON.stringify({ email_address: email, tags: tags })
   });
 
-  if (res.ok || res.status === 409) {
+  if (res.ok) {
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   }
   
   const data = await res.json();
+  
+  // Already subscribed
+  if (data.code === 'email_already_exists') {
+    return new Response(JSON.stringify({ success: true, already: true }), { status: 200 });
+  }
+  
   return new Response(JSON.stringify({ success: false, error: data }), { status: 400 });
 };

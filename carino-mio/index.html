@@ -1000,12 +1000,15 @@
                 })
             });
             
-            if (res.ok) {
-                section.dataset.signupState = 'success';
-                message.textContent = "Thank you — we'll be in touch.";
-            } else {
-                throw new Error('Failed');
-            }
+        if (res.ok) {
+            const data = await res.json();
+            section.dataset.signupState = 'success';
+            message.textContent = data.already 
+                ? "You're already subscribed." 
+                : "Thank you — we'll be in touch.";
+        } else {
+            throw new Error('Failed');
+        }
         } catch (err) {
             message.textContent = 'Something went wrong. Please try again.';
             message.classList.add('error');
